@@ -51,7 +51,7 @@ class PluginAdmin_ActionAdminPets_EventAjax extends Event
                 $aRes[] = [
                     'id' => $oPet->getId(),
                     'nickname' => $oPet->getNickname(),
-                    'species' => $oPet->getSpecies(),
+                    'species' => GetSelectText($oPet->getSpecies(), 'pets_species_items'),
                     'user_fio' => $oPet->getUserFio(),
                     'user_phone' => $oPet->getUserPhone(),
                 ];
