@@ -28,7 +28,7 @@
             $('.user.autocomplete-pro').autocompletePro({
                 name: 'users',
 				name_search: 'search',
-                url: ADMIN_URL+'user/ajax/search/',
+                url: ADMIN_URL+'users/ajax/search/',
                 url_search: ADMIN_URL+'user/',
                 render : function(obj){
                     var item =
@@ -38,7 +38,7 @@
                     return item;
                 }
             }, function(obj){
-                window.location.href = ADMIN_URL+'user/'+obj.id+'/';
+                window.location.href = ADMIN_URL+'users/'+obj.id+'/';
             });
         </script>
     {/capture}
