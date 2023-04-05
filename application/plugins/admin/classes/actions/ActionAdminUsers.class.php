@@ -20,11 +20,12 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
          */
         $this->AddEventPreg('/^(page([\d]+))?$/i', 'UsersList');
         $this->AddEventPreg('/^([\d]+)$/i', 'UserEdit');
+        $this->AddEventPreg('/^add$/i', 'UserAdd');
+        $this->AddEventPreg('/^remove$/i','/^([\d]+)$/i', 'UserRemove');
         /**
          * ajax
          */
         $this->RegisterEventExternal('AjaxUser', 'PluginAdmin_ActionAdminUsers_EventAjax');
-        $this->AddEventPreg('/^ajax$/i', '/^add$/i', 'AjaxUser::Add');
         $this->AddEventPreg('/^ajax$/i', '/^search$/i', 'AjaxUser::Search');
         $this->AddEventPreg('/^ajax$/i', '/^right$/i', '/^change$/i', 'AjaxUser::RightChange');
     }
@@ -105,6 +106,39 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
         ]);
         $this->Viewer_Assign('aUserRight', $aUserRight);
         $this->SetTemplateAction('user.edit');
+    }
+
+    public function UserAdd()
+    {
+        if (isPost()) {
+            $oUser = Engine::GetEntity('user', getRequest('user'));
+            $oUser->setPasswordConfirm($oUser->getPassword());
+            $oUser->_setValidateScenario('registration');
+            if ($oUser->_Validate()) {
+                $oUser->Add();
+                Router::Location(ADMIN_URL.'users/'.$oUser->getId().'/');
+            } else {
+                foreach ($oUser->_getValidateErrors() as $aFieldErrors) {
+                    foreach ($aFieldErrors as $sError) {
+                        $this->Message_AddError($sError);
+                    }
+                }
+            }
+        } else {
+            $oUser = Engine::GetEntity('user');
+        }
+        $this->Viewer_Assign('oUser', $oUser);
+        $this->SetTemplateAction('user.add');
+    }
+
+    public function UserRemove()
+    {
+        $iUserId = $this->GetParamEventMatch(0,1);
+        $oUser = $this->User_GetById($iUserId);
+        if (!$oUser) return parent::EventNotFound();
+        $oUser->Delete();
+        $this->Message_AddNotice('Пользоваль успешно удален', false, true);
+        return Router::Location(ADMIN_URL.'users/');
     }
 
     private function UserSubmit(&$oUser)

@@ -19,7 +19,7 @@ if (LS::Adm() || LS::Manager()) {
                 'sort' => 0,
                 'url' => '/' . $config['url'] . '/users/add/',
                 'lang_key' => 'plugin.admin.menu.users_add',
-                'menu_key' => 'order_list'
+                'menu_key' => 'users_add'
             ];
 
         }

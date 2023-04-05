@@ -2,6 +2,7 @@
 
 {block name='layout_options'}
 	{$sMenuSelect = 'users'}
+	{$sMenuSelectSub = 'users_add'}
 {/block}
 
 {block name='layout_content'}

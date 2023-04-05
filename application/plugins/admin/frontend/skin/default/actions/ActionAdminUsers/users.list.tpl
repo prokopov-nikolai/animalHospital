@@ -15,9 +15,7 @@
             <div class="cl" style="height: 20px;"></div>
         </div>
         <div class="block">
-            {*<div class="title">Добавить дизайн</div>*}
-            {*Название товара&nbsp;&nbsp; <input type="text" class="product autocomplete-pro">*}
-            {*<small class="note">Начните вбивать название товара. Затем кликните по нужному, чтобы <b>добавить</b></small>*}
+            {component button text="Добавить" url="{$ADMIN_URL}users/add/"}
         </div>
     </div>
     {include file="{$aTemplatePathPlugin.admin}users/list.tpl"}

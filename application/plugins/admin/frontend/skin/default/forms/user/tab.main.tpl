@@ -1,7 +1,9 @@
-<div class="ls-field ls-clearfix">
-    <label class="ls-field-label">Зарегистрирован</label>
-    <div class="ls-field  pt-8">{$oUser->getDateCreate()|date_format:'d.m.Y'}</div>
-</div>
+{if $oUser->getId()}
+    <div class="ls-field ls-clearfix">
+        <label class="ls-field-label">Зарегистрирован</label>
+        <div class="ls-field  pt-8">{$oUser->getDateCreate()|date_format:'d.m.Y'}</div>
+    </div>
+{/if}
 
 {component 'field' template='file'
 label = 'Фото'
@@ -32,8 +34,8 @@ name  = 'user[email]'
 value = $oUser->getEmail()}
 
 {component 'field' template='text'
-label = 'Новый пароль'
-name  = 'new_pass'
+label = ($oUser->getId()) ? 'Новый пароль' : 'Пароль'
+name  = ($oUser->getId()) ? 'new_pass' : 'user[password]'
 value = ''}
 
 
@@ -47,20 +49,7 @@ label = 'Активен'
 name = 'user[activate]'
 checked = $oUser->getActivate()}
 
-{if LS::HasRight('19_user_public_key')}
-    <div class="cl h20"></div>
-{component 'field' template='text'
-label = 'public_key'
-name  = 'user[public_key]'
-value = $oUser->getPublicKey()}
-{/if}
-{if LS::HasRight('19_user_public_key')}
-    {component 'field' template='text'
-    label = 'Сайт'
-    name  = 'user[site]'
-    value = $oUser->getSite()
-    note  = 'По названию сайта ищется вотемарк в папке watermark'}
-{/if}
+
 
 <div class="cl" style="height: 20px;"></div>
 {component 'field' template='textarea'

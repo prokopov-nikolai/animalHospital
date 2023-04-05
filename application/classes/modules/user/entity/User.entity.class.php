@@ -11,8 +11,7 @@ class ModuleUser_EntityUser extends EntityORM
         ['email', 'email_exists', 'on' => ['registration']],
         ['phone', 'phone_exists', 'on' => ['registration']],
         ['password', 'string', 'allowEmpty' => false, 'min' => 5, 'on' => ['registration']],
-        ['password_confirm', 'compare', 'compareField' => 'password', 'on' => ['registration']],
-        ['captcha', 'captcha', 'allowEmpty' => false, 'on' => ['registration']],
+        ['password_confirm', 'compare', 'compareField' => 'password', 'on' => ['registration']]
     ];
 
     protected $aRight = [];
@@ -25,15 +24,6 @@ class ModuleUser_EntityUser extends EntityORM
      */
     public function __construct($aParam = false)
     {
-        $sCaptchaValidateType = func_camelize('captcha_' . Config::Get('general.captcha.type'));
-        $this->aValidateRules[] = [
-            'captcha',
-            $sCaptchaValidateType,
-            'name' => 'user_signup',
-            'on' => ['registration'],
-            'label' => $this->Lang_Get('auth.labels.captcha_field')
-        ];
-
         parent::__construct($aParam);
     }
 
@@ -61,6 +51,8 @@ class ModuleUser_EntityUser extends EntityORM
      */
     public function ValidatePhoneExists($sValue, $aParams)
     {
+        $sValue = NormalizePhone($sValue);
+        $this->setPhone($sValue);
         if (!$this->User_GetUserByPhone($sValue)) {
             return true;
         }
@@ -106,25 +98,10 @@ class ModuleUser_EntityUser extends EntityORM
         return $this->getIsAdmin();
     }
 
-    public function isAgent()
-    {
-        return $this->getIsAgent();
-    }
-
-    public function isManager()
-    {
-        return $this->getIsManager();
-    }
-
     public function getUrl($sPage = null)
     {
         return '#';
         return Router::GetPath('profile') . $this->getId() . '/' . ($sPage ? $sPage . '/' : '');
-    }
-
-    public function getDisplayName()
-    {
-        return htmlspecialchars($this->getMail());
     }
 
     public function getRights()

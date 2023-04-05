@@ -22,6 +22,7 @@
             <td>
                 {if LS::HasRight('2_users_edit')}
                     <a href="{$ADMIN_URL}users/{$oU->getId()}/" class="ls-icon-pencil"></a>
+                    <a href="{$ADMIN_URL}users/remove/{$oU->getId()}/" class="ls-icon-remove" onclick="return confirm('Удалить?')"></a>
                 {/if}
             </td>
         </tr>
