@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import "mixins";
+@import "svg";
+@import "start";
+@import "fonts";
+@import "notification";
+@import "error";
+@import "auth";
+
+@import "header";
+
+a {
+    color: #337ab7;
+}
+
+.main-content {
+    max-width: 1510px;
+    margin: auto;
+    padding: 15px;
+    min-height: calc(100vh - 293px);
+    @import "breadcrumbs";
+    @media (max-width: 1510px) {
+        max-width: 1280px;
+    }
+}
+
+@import "index";
+@import "paging";
+@import "page";
+.scrolled {
+    margin-right: -15px;
+    padding-right: 15px;
+    overflow: auto;
+}
+.scrolled::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrolled::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track{
+    background: #fff;
+}
+
+.scrolled::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: darkgrey;
+    outline: none;
+
+    @include radius(2px);
+}
+
+@import "footer";
+@import "modal";
+
+@import "notification";
+//@import "new-year";
+.ls-performance {
+    table {
+        width: 100%;
+    }
+}
+
+@media print {
+    .not-print {
+        display: none;
+    }
+}
+
+@import "/framework/frontend/components/alert/css/alert.css";
+.ls-alert-close:before {
+    content: '';
+    background: url(/framework/frontend/components/icon/images/icons.png) no-repeat;
+    background-position: -312px 0;
+    display: block;
+    margin: 2px 0 0 -6px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+}
+.ls-alert-list {
+    margin: 0;
+    list-style: none;
+    padding: 5px 25px;
+}

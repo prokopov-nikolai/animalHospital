@@ -1,0 +1,106 @@
+.order-list {
+    padding-top: 55px;
+    .filter-wrap {
+        background: rgb(255, 255, 255);
+        margin-left: -15px;
+        margin-top: -55px;
+        padding-left: 15px;
+        position: fixed;
+        width: 100%;
+        z-index: 110;
+
+        .filter-button {
+            display: inline-block;
+            height: 30px;
+            margin: 10px 10px 0 0;
+            width: 30px;
+
+            @include background-svg($svg-filter);
+            &:hover {
+                cursor: pointer;
+                opacity: 0.5;
+            }
+        }
+        #order-filter {
+            .row1 {
+                display: block;
+                width: 100%;
+            }
+            .row2 {
+                display: none;
+                width: 100%;
+            }
+            .manager {
+                min-width: 200px;
+            }
+        }
+        .orders-lost {
+            margin: 8px 0 0 0!important;
+        }
+        .ls-field.agents {
+            min-width: 185px;
+        }
+    }
+    .panel {
+        .statistics {
+            display: grid;
+            float: left;
+            left: 410px;
+            margin: 5px 0 0 15px;
+            position: fixed;
+            top: 11px;
+            z-index: 100;
+
+            grid-template-columns: 155px 50px 70px 50px 103px 50px 54px 90px 100px 100px 200px;
+
+            .incoming-count {
+                color: #333;
+                font-weight: 700;
+            }
+
+            .orders-count {
+                color: #333;
+                font-weight: 700;
+            }
+
+            .orders-conversion {
+                color: #333;
+                font-size: 17px;
+                font-weight: 700;
+            }
+
+            ._title.agent-commission {
+                font-size: 20px;
+            }
+
+            .agent-commission-sum {
+                color: #333;
+                font-size: 17px;
+                font-weight: 700;
+            }
+            .margin-plan {
+                color: #333;
+                font-weight: 700;
+                &.green {
+                    color: #0e7802;
+                }
+                &.light-red {
+                    color: #d67900;
+                }
+                &.red {
+                    color: #d60000;
+                }
+                span {
+                    font-size: 12px;
+                }
+            }
+            b {
+                color: #333;
+            }
+            .orders-average {
+                position: relative;
+                margin-top: -4px;
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+/**
+ * Пагинация
+ */
+
+.paging {
+    padding: 20px 0;
+    ._item {
+        background: #f7f7f7;
+        margin: 0 5px;
+        padding: 10px 5px;
+        text-align: center;
+        text-decoration: none;
+        width: 40px;
+        &.active {
+            background: #2192a4;
+            color: #fff;
+        }
+        &:hover {
+            background: #eee;
+        }
+    }
+    span._item {
+        &:hover {
+            background-color: #fff!important;
+        }
+        &.active {
+            background: #2192a4!important;
+        }
+    }
+    .prev {
+        height: 40px;
+        background-position: center center;
+        @include background-svg($svg-prev-next);
+        @include transform(180deg);
+        &:hover {
+            background-position: center center;
+            @include background-svg($svg-prev-next);
+            @include transform(180deg);
+        }
+    }
+    .next {
+        height: 40px;
+        background-position: center center;
+        @include background-svg($svg-prev-next);
+        &:hover {
+            background-position: center center;
+            @include background-svg($svg-prev-next);
+        }
+    }
+    span.prev, span.next {
+        opacity: .5;
+    }
+}

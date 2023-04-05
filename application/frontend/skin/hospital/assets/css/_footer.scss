@@ -1,0 +1,178 @@
+footer {
+    background: #2192a4;
+    height: auto;
+
+    .wrap {
+        color: #fff;
+        margin: auto;
+        max-width: 1510px;
+        padding: 40px 15px 30px;
+        @media (max-width:1080px) {
+            .about {
+                order:0;
+                width: 50% !important;
+            }
+            .more {
+                order:1;
+                width: 50% !important;
+            }
+            .menu {
+                order:2;
+                padding-top: 30px;
+                width: 50% !important;
+            }
+            .category {
+                order:3;
+                padding-top: 30px;
+                width: 50%!important;
+            }
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+            &.social {
+                display: inline-block;
+                height: 30px;
+                margin-top: 20px;
+                margin-right: 10px;
+                width: 30px;
+                @include transition(.3s);
+                &.vk {
+                    @include background-svg($svg-vk);
+                }
+                &.youtube {
+                    @include background-svg($svg-youtube);
+                }
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
+
+        img {
+            position: relative;
+            top: 5px;
+            left: 10px;
+        }
+
+        .about {
+            line-height: 24px;
+            width: 320px;
+
+            .title {
+                display: inline-block;
+                margin-right: 5px;
+                top: -9px;
+                position: relative;
+            }
+            .logo {
+                background: no-repeat top left url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjMiIGhlaWdodD0iMjkiIHZpZXdCb3g9IjAgMCA2MyAyOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTM3LjA0MTcgMTIuMDE2OEwzMS4yMjMyIDE1LjM3NThMNDUuNzM4MiAyMy43NTUzTDM3LjEwNzQgMjguNzM3OEwyMi41OTI1IDIwLjM1ODRMMTEuNzMxMyAyNi42Mjg1TDMuNTQ5NzZlLTA1IDE5Ljg1NjFMMzMuOTQxMiAwLjI2MTg0MUw2Mi4yMjU0IDE2LjU5MDRMNTMuNTk0NyAyMS41NzI5TDM3LjA0MTcgMTIuMDE2OFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgoK);
+                color: #fff;
+                font-size: 26px;
+                font-weight: 800;
+                line-height: 20px;
+                margin-top: 22px;
+                padding-left: 70px;
+                position: relative;
+                text-decoration: none;
+            }
+
+            :nth-child(2) {
+                margin-top: 10px;
+            }
+        }
+
+        .menu {
+            line-height: 24px;
+            width: 340px;
+
+            display: grid;
+            grid-template-columns: 1fr 150px;
+            grid-template-rows: 1fr;
+            @media (max-width: 1380px) {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                width: 180px
+            }
+
+            nav {
+                padding: 0 10px;
+                width: 180px;
+            }
+            .user {
+                padding: 0 10px;
+                width: 170px;
+            }
+        }
+
+        .category {
+            line-height: 24px;
+            width: 290px;
+            @media (max-width: 1380px) {
+                width: 180px
+            }
+            nav {
+                display: grid;
+                grid-template-columns: 1fr 100px;
+                grid-template-rows: repeat(3, 1fr);
+                padding: 0 10px;
+                grid-template-areas: 'pryamye tahty'  'uglovye sofy' 'kresla .';
+                .pryamye {
+                    grid-area: pryamye;
+                }
+                .uglovye {
+                    grid-area: uglovye;
+                }
+                .sofy {
+                    grid-area: sofy;
+                }
+                .tahty {
+                    grid-area: tahty;
+                }
+                .kresla {
+                    grid-area: kresla;
+                }
+                @media (max-width:1380px) {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    grid-template-areas: 'pryamye'  'uglovye' 'sofy' 'tahty' 'kresla';
+                }
+            }
+        }
+
+        .more {
+            line-height: 24px;
+            width: 350px;
+
+            input[type="email"] {
+                height: 30px;
+                width: 210px;
+            }
+
+            a {
+                border-bottom: dashed 1px #fff;
+
+                &:hover {
+                    border-bottom-color: transparent;
+                    text-decoration: none !important;
+                }
+            }
+
+            .button {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 17px;
+                padding: 6px 5px;
+                width: 134px;
+                height: 30px;
+            }
+        }
+    }
+}

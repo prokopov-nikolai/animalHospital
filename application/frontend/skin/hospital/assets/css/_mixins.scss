@@ -1,0 +1,130 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($seconds) {
+  -webkit-transition: all $seconds ease;
+  -moz-transition: all $seconds ease;
+  -ms-transition: all $seconds ease;
+  -o-transition: all $seconds ease;
+  transition: all $seconds ease;
+}
+
+@mixin transform($deg) {
+  -moz-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+@mixin transformTranslate($deg, $x, $y) {
+  -moz-transform: rotate($deg) translateX($x) translateY($y);
+  -webkit-transform: rotate($deg) translateX($x) translateY($y);
+  -o-transform: rotate($deg) translateX($x) translateY($y);
+  -ms-transform: rotate($deg) translateX($x) translateY($y);
+  transform: rotate($deg) translateX($x) translateY($y);
+}
+
+@mixin gradient($startColor, $endColor) {
+  background: $startColor; /* Old browsers */
+  background: -moz-linear-gradient(top, $startColor 0%, $endColor 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $startColor 0%, $endColor 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $startColor 0%, $endColor 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$startColor', endColorstr='$endColor', GradientType=0); /* IE6-9 */
+}
+@mixin hover($color1) {
+  text-decoration: none;
+  border-bottom:transparent solid 1px;
+  @include transition(.5s);
+  &:hover{
+    border-bottom-color: $color1;
+  }
+}
+@mixin unhover($color1) {
+  text-decoration: none;
+  border-bottom:$color1 solid 1px;
+  @include transition(.5s);
+  &:hover{
+    border-bottom-color: transparent;
+  }
+}
+
+@mixin margincenter(){
+  position: absolute;top:0;right:0;bottom: 0;left:0;margin: auto;
+}
+
+@mixin fl(){
+  display:block; position: relative; float: left;
+}
+
+
+/*** Alex ***/
+// Миксины
+
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin font($weight, $size) {
+  font-family: 'Museo Sans Cyrl', sans-serif !important;
+  font-weight: $weight !important;
+  font-size: $size !important;
+}
+
+@mixin d-flex($x, $y) {
+  display: flex !important;
+  display: -webkit-flex !important;
+  -webkit-align-items: $y !important;
+  align-items: $y !important;
+  -webkit-justify-content: $x !important;
+  justify-content: $x !important;
+}
+
+@mixin f-col {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+@mixin f-rw {
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+@mixin anim($t) {
+  -webkit-transition: all $t ease;
+  -moz-transition: all $t ease;
+  -ms-transition: all $t ease;
+  -o-transition: all $t ease;
+  transition: all $t ease;
+}
+
+@mixin gray($z) {
+  -moz-filter: grayscale($z);
+  -o-filter: grayscale($z);
+  -webkit-filter: grayscale($z);
+  filter: grayscale($z);
+}
+
+@mixin placeholder($c) {
+  input::-webkit-input-placeholder {
+    color: $c;
+  }
+  input::-moz-placeholder {
+    color: $c;
+  }
+  /* Firefox 19+ */
+  input:-moz-placeholder {
+    color: $c;
+  }
+  /* Firefox 18- */
+  input:-ms-input-placeholder {
+    color: $c;
+  }
+}

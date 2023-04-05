@@ -1,0 +1,40 @@
+aside, .breadcrumb, footer {
+  display: none !important;
+}
+
+section {
+  padding-top: 15px !important;
+}
+section .rtable {
+  padding-top: 5px !important;
+  margin-left: 0 !important;
+  border: #333 solid 1px;
+  padding: 0 !important;
+}
+section .table.delivery {
+  width: 800px;
+}
+section .table.delivery tr th, section .table.delivery tr td {
+  font-size: 12px !important;
+  border-bottom: #000 solid 1px !important;
+}
+section h1 {
+  width: 720px;
+}
+section h1 span {
+  display: block;
+  font-size: 12px;
+}
+section .table.report-manufacture {
+  width: 770px;
+  color: #000;
+}
+section .table.report-manufacture tr th, section .table.report-manufacture tr td {
+  font-size: 12px !important;
+  border-bottom: #000 solid 1px !important;
+}
+section .table.report-manufacture tr .product {
+  width: 170px;
+}
+
+/*# sourceMappingURL=print.css.map */

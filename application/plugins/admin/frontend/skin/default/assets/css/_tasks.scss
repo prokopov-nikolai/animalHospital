@@ -1,0 +1,26 @@
+.tasks-filter {
+    .ls-field {
+        display: inline-block;
+        width: 200px;
+    }
+    .ls-field--date {
+        //margin-top: 0;
+        //padding: 0;
+        position: relative;
+        top: -20px;
+    }
+    .ls-button {
+        position: relative;
+        top: -22px;
+    }
+}
+.tasks {
+    tr{
+        &:hover {
+            background: #ddd;
+        }
+        .order-number {
+            white-space: nowrap;
+        }
+    }
+}

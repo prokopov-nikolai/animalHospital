@@ -1,0 +1,8 @@
+/application/config/config.local.php
+*.idea*
+/ah_/
+/robots.txt
+/fabfile.*
+/watermark/*
+/dump/*
+/uploads*

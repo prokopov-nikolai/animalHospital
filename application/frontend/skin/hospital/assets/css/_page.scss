@@ -1,0 +1,12 @@
+.page {
+    .table {
+        border-collapse: collapse;
+        border:#666 solid 1px;
+        tr {
+            th, td {
+                border:#666 solid 1px;
+                padding: 5px 10px;
+            }
+        }
+    }
+}

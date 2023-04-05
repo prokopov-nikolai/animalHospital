@@ -1,0 +1,45 @@
+/**
+ * Уведомления
+ */
+#notifier {
+    bottom: 2%;
+    position: fixed;
+    right: 2%;
+    z-index: 10000;
+
+    .n-box {
+        background: #fff;
+        box-shadow: #aaa 0 0 5px;
+        color: #fff;
+        margin: 15px 0;
+        padding: 20px;
+        //width: 300px;
+        a {
+            color: #fff;
+        }
+    }
+
+    h3 {
+        color: #fff;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 300;
+        margin: 0;
+        padding: 0 0 0;
+    }
+
+    .ls-notification--success {
+        background: #00b6a8;
+        color: #fff;
+    }
+
+    .ls-notification--error {
+        background: #aa0000;
+        color: #fff;
+    }
+
+    p {
+        font-size: 16px;
+        margin: 0 !important;
+    }
+}
