@@ -59,8 +59,8 @@ $config['$root$']['router']['page'][$config['url'] . '_users']       = 'PluginAd
 
 $config['$root$']['router']['page'][$config['url'] . '_media']      = 'PluginAdmin_ActionAdminMedia';
 
-$config['$root$']['module']['user']['per_page'] = 20;
-$config['$root$']['module']['pets']['per_page'] = 20;
+$config['$root$']['module']['user']['per_page'] = 2;
+$config['$root$']['module']['pets']['per_page'] = 2;
 $config['$root$']['module']['media']['per_page'] = 24;
 
 $config['$root$']['module']['media']['type']['media']['image']['max_size_url'] = 10 * 1024; // Максимальный размер файла в kB

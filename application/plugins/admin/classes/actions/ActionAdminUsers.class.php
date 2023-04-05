@@ -77,8 +77,9 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
             '#sort' => array('date_create' => 'desc'),
             '#page' => array($iPage, Config::Get('module.user.per_page'))
         ));
+        if (!count($aResult['collection']) && $iPage > 1) return parent::EventNotFound();
         $this->Viewer_Assign('aUser', $aResult['collection']);
-        $aPaging = $this->Viewer_MakePaging($aResult['count'], $iPage, Config::Get('module.user.per_page'), Config::Get('pagination.pages.count'), ADMIN_URL . 'user/');
+        $aPaging = $this->Viewer_MakePaging($aResult['count'], $iPage, Config::Get('module.user.per_page'), Config::Get('pagination.pages.count'), ADMIN_URL . 'users/');
         $this->Viewer_Assign('paging', $aPaging);
         $this->SetTemplateAction('users.list');
     }
@@ -91,9 +92,6 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
         if (!LS::HasRight('2_users_edit')) return parent::EventForbiddenAccess();
         $oUser = $this->User_GetById($this->GetParamEventMatch(0));
         $this->UserSubmit($oUser);
-        /**
-         * Получим пользователя по айди из урла
-         */
         $this->AppendBreadCrumb(20, $oUser->getFio());
         $this->Viewer_Assign('oUser', $oUser);
         $aRight = $this->Right_LoadTreeOfRight(['#order' => ['sort' => 'asc']]);
@@ -108,6 +106,9 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
         $this->SetTemplateAction('user.edit');
     }
 
+    /**
+     * Добавление пользователя
+     */
     public function UserAdd()
     {
         if (isPost()) {
@@ -116,6 +117,9 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
             $oUser->_setValidateScenario('registration');
             if ($oUser->_Validate()) {
                 $oUser->Add();
+                if (isset($_FILES['user_photo']) && $_FILES['user_photo']['error'] == 0) {
+                    $this->Media_UploadLocal($_FILES['user_photo'], 'user_photo', $oUser->getId());
+                }
                 Router::Location(ADMIN_URL.'users/'.$oUser->getId().'/');
             } else {
                 foreach ($oUser->_getValidateErrors() as $aFieldErrors) {
@@ -131,6 +135,10 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
         $this->SetTemplateAction('user.add');
     }
 
+    /**
+     * Удаление пользователя
+     * @return string|void
+     */
     public function UserRemove()
     {
         $iUserId = $this->GetParamEventMatch(0,1);
@@ -141,6 +149,10 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
         return Router::Location(ADMIN_URL.'users/');
     }
 
+    /**
+     * Обновление данных пользователя
+     * @param $oUser
+     */
     private function UserSubmit(&$oUser)
     {
         if (isPost()) {

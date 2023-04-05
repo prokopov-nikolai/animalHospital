@@ -30,7 +30,7 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
     }
 
     /**
-     * Список покупателей
+     * Список питомцев
      */
     public function PetsList()
     {
@@ -84,13 +84,14 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
             '#page' => array($iPage, Config::Get('module.pets.per_page'))
         ));
         $this->Viewer_Assign('aPets', $aResult['collection']);
+        if (!count($aResult['collection']) && $iPage > 1) return parent::EventNotFound();
         $aPaging = $this->Viewer_MakePaging($aResult['count'], $iPage, Config::Get('module.pets.per_page'), Config::Get('pagination.pages.count'), ADMIN_URL . 'pets/');
         $this->Viewer_Assign('paging', $aPaging);
         $this->SetTemplateAction('pets.list');
     }
 
     /**
-     * Выводим данные по пользователю
+     * Выводим данные по питомцу
      */
     public function PetEdit()
     {
@@ -112,6 +113,9 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
         $this->SetTemplateAction('pet.edit');
     }
 
+    /**
+     * Добавляем питомца
+     */
     public function PetAdd()
     {
         if (isPost()) {
@@ -141,6 +145,10 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
         $this->SetTemplateAction('pet.add');
     }
 
+    /**
+     * Удаление питомца
+     * @return string|void
+     */
     public function PetRemove()
     {
         $iPetId = $this->GetParamEventMatch(0,1);
@@ -151,6 +159,10 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
         return Router::Location($_SERVER['HTTP_REFERER']);
     }
 
+    /**
+     * Обновление данных питомца
+     * @param $oPet
+     */
     private function PetSubmit(&$oPet)
     {
         if (isPost()) {
