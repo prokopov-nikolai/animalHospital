@@ -13,7 +13,9 @@ $oLs->Lang_AddMessage('admin', array(
 return array(
     'menu' => array(
         'users' => 'Пользователи',
-        'users_add' => 'Добавить'
+        'users_add' => 'Добавить',
+        'pets' => 'Питомцы',
+        'pets_add' => 'Добавить',
     ),
     'breadcrumbs' => array(
         'start' => 'Начало'

@@ -148,13 +148,7 @@ class PluginAdmin_ActionAdminUsers extends PluginAdmin_ActionPlugin
             $aUser['phone'] = NormalizePhone($aUser['phone']);
             $aUser['phone_dop'] = NormalizePhone($aUser['phone_dop']);
             if (!isset($aUser['is_admin'])) $aUser['is_admin'] = 0;
-            if (!isset($aUser['is_manager'])) $aUser['is_manager'] = 0;
-            if (!isset($aUser['is_agent'])) $aUser['is_agent'] = 0;
             if (!isset($aUser['activate'])) $aUser['activate'] = 0;
-            if (!LS::HasRight('19_user_public_key') && isset($aUser['public_key'])) {
-                if (isset($aUser['site'])) unset($aUser['site']);
-                unset($aUser['public_key']);
-            }
             $oUser->_setData($aUser);
             if (($sPass = getRequestStr('new_pass')) && $sPass != '') {
                 $oUser->setPassword(md5($sPass));

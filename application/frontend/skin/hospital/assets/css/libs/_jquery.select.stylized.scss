@@ -1,0 +1,87 @@
+.select-stylized {
+    cursor: pointer;
+    position: relative;
+    ._selected {
+        background: #f5f5f5;
+        border: #e8e8e8 solid 1px;
+        color: #060606;
+        font-size: 14px;
+        margin: 5px 0;
+        overflow: hidden;
+        padding: 10px 15px;
+        position: relative;
+        width: 100%;
+
+        @include border-radius(5px);
+        &:after {
+            background-position: center;
+            background-repeat: no-repeat;
+            content: '';
+            display: block;
+            height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 20px;
+
+            @include background-svg($svg-arrow-down);
+        }
+        &._error {
+            border-color: #ff3f3f !important;
+            background-color: #ffcccc !important;
+        }
+    }
+    ._options {
+        background: #fff;
+        border: #e8e8e8 solid 1px;
+        box-shadow: 3px 1px 8px 0px rgba(0, 0, 0, 0.14);
+        display: none;
+        max-height: 200px;
+        position: absolute;
+        margin-right: -15px;
+        padding-right: 15px;
+        overflow: auto;
+        width: 100%;
+        z-index: 10;
+        ._option {
+            padding: 10px 15px;
+            &:hover {
+                background: #f5f5f5;
+                color: #343434;
+            }
+        }
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-track{
+            background: #fff;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: darkgrey;
+            outline: none;
+            @include radius(2px);
+        }
+    }
+    &.multiple {
+        ._options {
+            ._option {
+                padding-left: 50px;
+                &:before {
+                    content: '';
+                    display: block;
+                    height: 20px;
+                    margin-left: -30px;
+                    position: absolute;
+                    width: 20px;
+
+                    @include background-svg($svg-check);
+                }
+                &.selected {
+                    &:before {
+                        @include background-svg($svg-checked);
+                    }
+                }
+            }
+        }
+    }
+}

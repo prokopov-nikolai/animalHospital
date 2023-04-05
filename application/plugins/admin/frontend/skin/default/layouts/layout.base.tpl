@@ -11,9 +11,7 @@
     <title>{block name='layout_title'}{$sHtmlTitle}{/block}</title>
 
     {*<link href="{cfg name='path.skin.assets.web'}/images/favicons/favicon.ico?v1" rel="shortcut icon" />*}
-    <link href="{cfg name='path.skin.assets.web'}/images/favicon/favicon.png?v1" rel="shortcut icon"/>
-    <link rel="search" type="application/opensearchdescription+xml" href="{router page='search'}opensearch/"
-          title="{cfg name='view.name'}"/>
+    <link href="{cfg name='path.skin.assets.web'}/images/favicon/favicon.svg?v1" rel="shortcut icon"/>
 
     {**
      * Стили

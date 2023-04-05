@@ -13,21 +13,6 @@ class PluginAdmin_ActionAdminUsers_EventAjax extends Event
          */
         $this->Viewer_SetResponseAjax('json', true, false);
     }
-    
-    /**
-     * Добавление пользователя
-     */
-    public function Add()
-    {
-        $sPhone = NormalizePhone(getRequestStr('sPhone'));
-        if (!$sPhone) return $this->Message_AddErrorSingle('Некорректный телефон');
-        $oUser = $this->User_GetByPhone($sPhone);
-        if ($oUser) return $this->Message_AddErrorSingle('Пользователь с таким телефоном уже существует');
-        $oUser = Engine::GetEntity('User',['phone' => $sPhone]);
-        $oUser->Add();
-        $this->Viewer_AssignAjax('iUserId', $oUser->getId());
-        $this->Message_AddNoticeSingle('Пользователь успешно добавлен');
-    }
 
     /**
      * Поиск пользователя

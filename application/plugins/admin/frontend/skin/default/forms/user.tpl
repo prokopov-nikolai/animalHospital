@@ -9,7 +9,7 @@
     {$tabs[] = [ 'text' => 'Права',       'body' => $smarty.capture.sTabRights,  'uid' => 'user-rights']}
 {/if}
 
-<form action="" method="post" id="user" enctype="multipart/form-data">
+<form action="" method="post" id="user-form" enctype="multipart/form-data">
     {component 'tabs' classes='' mods='align-top' tabs=$tabs}
 
     {component 'button'
@@ -36,7 +36,7 @@
             $(document).bind('keydown', 'ctrl+s', function (e) {
                 if (e.ctrlKey && (e.which == 83 || e.which == 13)) {
                     e.preventDefault();
-                    $('#user').submit();
+                    $('#user-form').submit();
                     return false;
                 }
             });

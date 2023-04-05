@@ -1666,6 +1666,9 @@ ul {
   border: #cdcdcd solid 1px;
   padding-bottom: 150px;
 }
+#wrapper.admin #pet-form .pet-user .autocomplete-wrap {
+  width: 100%;
+}
 
 ._order.draggable {
   width: 292px;
