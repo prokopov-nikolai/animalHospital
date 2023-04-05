@@ -36,26 +36,11 @@ label = 'Новый пароль'
 name  = 'new_pass'
 value = ''}
 
-<div class="ls-field  ls-clearfix">
-    <label class="ls-field-label" for="">Telegram chat id</label>
-    <div class="ls-field pt-8">{($oUser->getTelegramChatId()) ? $oUser->getTelegramChatId() : 0}</div>
-</div>
-
 
 {component 'field' template='checkbox'
 label = 'Администратор'
 name = 'user[is_admin]'
 checked = $oUser->getIsAdmin()}
-
-{component 'field' template='checkbox'
-label = 'Агент'
-name = 'user[is_agent]'
-checked = $oUser->getIsAgent()}
-
-{component 'field' template='checkbox'
-label = 'Менеджер'
-name = 'user[is_manager]'
-checked = $oUser->getIsManager()}
 
 {component 'field' template='checkbox'
 label = 'Активен'

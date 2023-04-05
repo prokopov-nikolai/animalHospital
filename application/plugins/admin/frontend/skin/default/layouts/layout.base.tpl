@@ -40,33 +40,10 @@
 
 
     <script>
-        var PATH_ROOT = '{router page='/'}',
-            PATH_SKIN = '{cfg name="path.skin.web"}',
-            PATH_FRAMEWORK_FRONTEND = '{cfg name="path.framework.frontend.web"}',
-            PATH_FRAMEWORK_LIBS_VENDOR = '{cfg name="path.framework.libs_vendor.web"}',
-
-            LIVESTREET_SECURITY_KEY = '{$LIVESTREET_SECURITY_KEY}',
+        let LIVESTREET_SECURITY_KEY = '{$LIVESTREET_SECURITY_KEY}',
             SESSION_ID = '{$_sPhpSessionId}',
             SESSION_NAME = '{$_sPhpSessionName}',
-            LANGUAGE = '{$oConfig->GetValue('lang.current')}',
-            WYSIWYG = {if $oConfig->GetValue('view.wysiwyg')}true{else}false{/if},
-            USER_PROFILE_LOGIN = {if $oUserProfile}{json var=$oUserProfile->getLogin()}{else}''{/if},
-            ADMIN_URL = '{$ADMIN_URL}',
-            IS_MOBILE = {($IS_MOBILE) ? 1 : 0},
-            bUseDisneykeyApi = {($aSettings.use_disneykey_api) ? $aSettings.use_disneykey_api : 0};
-        {if !$oUserCurrent}
-        var bUserIsAuth = 0;
-        {else}
-        var bUserIsAuth = 1;
-        var sUserName = '{$oUserCurrent->getDisplayName()}';
-        var sUserEmail = '{$oUserCurrent->getMail()}';
-        {/if}
-
-        var aRouter = [];
-        {foreach $aRouter as $sPage => $sPath}
-        aRouter['{$sPage}'] = '{$sPath}';
-        {/foreach}
-
+            ADMIN_URL = '{$ADMIN_URL}';
     </script>
     <script src="{Config::Get('path.skin.assets.web')}/js/libs/jquery-3.3.1.js?{$sCacheHash}"></script>
     {**
@@ -82,7 +59,7 @@
     {/if}
 
 </head>
-<body class="{if $IS_MOBILE}IS_MOBILE {/if}{$sBodyClasses} {$BROWSER} {$BROWSER_VERSION} {if $bMenuHide == true}aside-hide{/if}" {if $smarty.get.print}onload="window.print();"{/if}>
+<body class="{if $bMenuHide == true}aside-hide{/if}" {if $smarty.get.print}onload="window.print();"{/if}>
 <div id="wrapper" class="admin dflex">
     {hook run='body_begin'}
         <aside>
@@ -101,9 +78,6 @@
                             </nav>
                         {/if}
                     {/foreach}
-                    {if !$oUserCurrent->getTelegramChatId()}
-                        <a href="tg://resolve?domain=FisherStoreBot&start={$oUserCurrent->getId()|cat:'fisher-store'|md5}" class="telegram-bot"><i class="fa fa-telegram"></i> Telegram Bot</a>
-                    {/if}
                 </nav>
             </aside>
         <section{if $bMenuHide == true} class="opened"{/if}>
@@ -122,17 +96,13 @@
                 {component 'alert' text=$aMsgNotice close=true}
             {/if}
 
-            {if Config::Get('debug_mode')}
-{*                <p style="color: #d60000;">Статистика не подключена</p>*}
-            {/if}
             {block name='layout_content'}{/block}
-
             {block name='layout_content_end'}{/block}
         </section>
 </div>
 <footer>
     <div class="wrap">
-        &copy; 2020-{$smarty.now|date_format:'Y'} "Диваны от Фишера" - фабрика мягкой мебели.
+        &copy; 2023-{$smarty.now|date_format:'Y'}
     </div>
 </footer>
 {$sLayoutAfter}

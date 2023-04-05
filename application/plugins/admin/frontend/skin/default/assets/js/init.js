@@ -36,6 +36,7 @@ $(function () {
         });
         aEditor.push(editor);
     });
+
 //	$('.js-editor-default').lsEditor();
     window.setTimeout(function () {
         $('.ls-alert').each(function(){
@@ -78,22 +79,22 @@ $(function () {
     //     dayOfWeekStart: 1,
     // });
 
-    $('.ls-field--datetime input').datepicker({
-        changeMonth           : true,
-        changeYear            : true,
-        firstDay              : 1,
-        changeFirstDay        : false,
-        navigationAsDateFormat: false,
-        duration              : 0,
-        onSelect              : function () {
-            datepickerYaproSetTime();
-        }
-
-    }).click(function () {
-        $(".datepickerYaproSelected").removeClass("datepickerYaproSelected");
-        $(this).addClass("datepickerYaproSelected");
-        datepickerYaproSetClockSelect();
-    });
+    // $('.ls-field--datetime input').datepicker({
+    //     changeMonth           : true,
+    //     changeYear            : true,
+    //     firstDay              : 1,
+    //     changeFirstDay        : false,
+    //     navigationAsDateFormat: false,
+    //     duration              : 0,
+    //     onSelect              : function () {
+    //         datepickerYaproSetTime();
+    //     }
+    //
+    // }).click(function () {
+    //     $(".datepickerYaproSelected").removeClass("datepickerYaproSelected");
+    //     $(this).addClass("datepickerYaproSelected");
+    //     datepickerYaproSetClockSelect();
+    // });
 
     $('.menu-show ').on('click', function(){
         $('body').toggleClass('aside-hide');

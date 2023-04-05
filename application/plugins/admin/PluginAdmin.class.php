@@ -25,6 +25,8 @@ class PluginAdmin extends Plugin
      */
     public function Init()
     {
+        $this->Viewer_AppendStyle('/framework/frontend/components/icon/css/icons.css');
+        $this->Viewer_AppendStyle('/framework/frontend/components/alert/css/alert.css');
 
     }
 }

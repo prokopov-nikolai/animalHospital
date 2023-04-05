@@ -1029,37 +1029,6 @@ ul {
     .nobr {
         white-space: nowrap;
     }
-    #option-values {
-        .option-value {
-            margin-bottom: 10px;
-            .img {
-                background: #ccc;
-                height: 50px;
-                width: 50px;
-                margin-right: 15px;
-                cursor: pointer;
-            }
-            input {
-                margin-right: 15px;
-                width: 320px;
-            }
-            .checkbox {
-                width: 30px;
-                input {
-                    width: auto;
-                }
-            }
-            .ls-icon-remove {
-                margin-top: 17px;
-            }
-        }
-    }
-    #product-options {
-        .h4 {
-            display: inline-block;
-            padding: 10px 0;
-        }
-    }
     .import-data {
         width: 95px;
     }
@@ -1085,21 +1054,61 @@ ul {
             padding-left: 30px;
         }
     }
-    .options-edit {
-        display: inline-block;
-    }
-    #product {
-        .field.select {
-            min-width: 250px;
+    .ls-tab-list {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-align-content: flex-start;
+        -ms-flex-line-pack: start;
+        align-content: flex-start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+
+        margin: 0;
+        padding: 0;
+        .ls-tab {
+            list-style: none;
+            padding: 15px;
+            border-bottom: transparent solid 1px;
+            cursor: pointer;
+            @include transition(.3s);
+            &:hover {
+                opacity: .7;
+            }
+            &.active {
+                border-bottom-color: #0f0f0f;
+                cursor: default;
+                opacity: 1!important;
+            }
         }
     }
-
-    @import "order.dashbord";
-    @import "order.list";
-    @import "order";
-    @import "report";
-    @import "analitics";
-    @import "tasks";
+    .ls-tabs-panes {
+        .ls-tab-pane {
+            border: #e8e8e8 solid 1px;
+            padding: 30px;
+            display: none;
+        }
+    }
+    .ls-tab{
+        color: #666;
+        &.active {
+            color: #111;
+        }
+    }
+    .ls-tabs-panes .ls-tab-pane {
+        border: #cdcdcd solid 1px;
+        padding-bottom: 150px;
+    }
 }
 
 ._order.draggable {
