@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    {include file="gtm.head.tpl"}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>{block name='layout_title'}{$sHtmlTitle}{/block}</title>
@@ -14,8 +13,6 @@
           rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="{Config::Get('path.skin.assets.web')}/images/favicon/favicon.svg?v2"
           type="image/svg+xml">
-    <link rel="shortcut icon" href="{Config::Get('path.skin.assets.web')}/images/favicon/favicon.png?v2"
-          type="image/png">
 
 
     {$aHtmlHeadFiles.css}
@@ -28,6 +25,7 @@
     <script src="{Config::Get('path.skin.assets.web')}/js/libs/nprogress.js?{$sCacheHash}"></script>
     <script src="{Config::Get('path.skin.assets.web')}/js/libs/jquery.notifier.js?{$sCacheHash}"></script>
     <script src="{Config::Get('path.skin.assets.web')}/js/libs/notification.js?{$sCacheHash}"></script>
+    <script src="{Config::Get('path.skin.assets.web')}/js/auth.js?{$sCacheHash}"></script>
 
     <script>
         if (navigator.userAgent.match(/Android/i)) {
@@ -47,57 +45,12 @@
         {foreach $aRouter as $sPage => $sPath}
         aRouter['{$sPage}'] = '{$sPath}';
         {/foreach}
-
-        $(function(){
-            /* Авторизация */
-            $('.js-auth-login-form, .js-auth-login-form-modal').on('submit', function (e) {
-                ls.ajax.submit(aRouter.auth + 'ajax-login/', $(this), function ( response ) {
-                    response.sUrlRedirect && (window.location = response.sUrlRedirect);
-                });
-
-                e.preventDefault();
-            });
-
-            /* Регистрация */
-            $('.js-auth-registration-form, .js-auth-registration-form-modal').on('submit', function (e) {
-                ls.ajax.submit(aRouter.auth + 'ajax-register/', $(this), function ( response ) {
-                    response.sUrlRedirect && (window.location = response.sUrlRedirect);
-                });
-
-                e.preventDefault();
-            });
-
-            /* Восстановление пароля */
-            $('.js-auth-reset-form, .js-auth-reset-form-modal').on('submit', function (e) {
-                ls.ajax.submit(aRouter.auth + 'ajax-password-reset/', $(this), function ( response ) {
-                    response.sUrlRedirect && (window.location = response.sUrlRedirect);
-                });
-
-                e.preventDefault();
-            });
-
-			/* Восстановление пароля */
-			$('.js-auth-reset-password-form, .js-auth-reset-password-form-modal').on('submit', function (e) {
-				ls.ajax.submit($(this).attr('action'), $(this), function ( response ) {
-					response.sUrlRedirect && (window.location = response.sUrlRedirect);
-				});
-
-				e.preventDefault();
-			});
-
-            /* Повторный запрос на ссылку активации */
-            ls.ajax.form(aRouter.auth + 'ajax-reactivation/', '.js-form-reactivation', function (result, status, xhr, form) {
-                form.find('input').val('');
-                ls.hook.run('ls_user_reactivation_after', [form, result]);
-            });
-        });
     </script>
 
 
 </head>
 
-<body class="{$sBodyClasses}{($IS_MOBILE) ? ' IS_MOBILE' : {($IS_TABLET) ? 'IS_TABLET' : ''}}">
-{include file="gtm.body.tpl"}
+<body>
 <section class="{$sAction} {$sEvent}">
     {block name='layout_page_title' hide}
         <h1>{$smarty.block.child}</h1>

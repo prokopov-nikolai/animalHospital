@@ -118,8 +118,8 @@ $config['module']['security']['hash'] = "livestreet_security_key"; // "прим�
 /* пока не применяется. убрал регистрацию за ненадобностью */
 // Настройки Google рекаптчи - https://www.google.com/recaptcha/admin/site/570108866#createsite
 $config['module']['validate']['recaptcha'] = array(
-    'site_key' => '6LfCK_shAAAAADYQKDfQrF1bxYHP3lDoQ2Er5Zmh', // Ключ
-    'secret_key' => '6LfCK_shAAAAAPJWNis1M0FztvdrAoxqTEvCL4mT', // Секретный ключ
+    'site_key' => '6Lezal0lAAAAAA0VQCyQNmp1xE2nMaVp88Q3wb4V', // Ключ
+    'secret_key' => '6Lezal0lAAAAAI6LjTYRSoeg5Qm95eisEj0xM_4f', // Секретный ключ
     'use_ip' => false, // Использовать при валидации IP адрес клиента
 );
 
@@ -177,8 +177,7 @@ $config['db']['table']['user_reminder'] = '___db.table.prefix___reminder';
 /**
  * Настройки роутинга
  */
-$config['url_adm'] = 'jarvis';
-$config['url4symb'] = substr($config['url_adm'], 0, 4);
+$config['url_adm'] = 'admin';
 
 $config['router']['rewrite'] = [];
 // Правила реврайта для REQUEST_URI
@@ -204,39 +203,8 @@ $config['router']['force_secure'] = array();
 /**
  * Подключение компонентов
  */
-if (isset($_SERVER['REQUEST_URI']) && !in_array(substr($_SERVER['REQUEST_URI'], 1, 4), array('auth', 'admi', $config['url4symb'], 'logi'))) {
-    $config['components'] = array(
-//		'ls-core',
-//		'ls-component',
-//		'pagination',
-//		'modal',
-//		'tabs',
-//		'notification',
-//		'auth'
-    );
-} else {
-    $config['components'] = array(
-        // Базовые компоненты
-//        'css-reset', 'css-helpers', 'typography', 'forms', 'grid',
-//        'ls-vendor', 'ls-core', 'ls-component', 'lightbox', 'avatar', 'slider', 'details', 'alert', 'dropdown', 'button', 'block',
-//        'nav', 'tooltip', 'tabs', 'modal', 'table', 'text', 'uploader', 'email', 'field', 'pagination', 'editor', 'more', 'crop',
-//        'performance', 'toolbar', 'actionbar', 'badge', 'autocomplete', 'icon', 'item', 'highlighter', 'jumbotron', 'notification', 'blankslate',
-
-        // Компоненты приложения
-//        'auth', 'userbar', 'toolbar-scrollup',
-    );
-}
-
-//$config['head']['default']['js'] = array(
-//	"https://www.google.com/recaptcha/api.js?onload=__do_nothing__&render=explicit" => array('merge' => false),
-//);
+$config['components'] = array();
 $config['head']['default']['css'] = array();
-
-// Подключение темы
-//if ( $config['view']['theme'] ) {
-//	$config['head']['default']['css'][] = "___path.skin.web___/themes/___view.theme___/style.css";
-//}
-
 
 /**
  * Установка локали

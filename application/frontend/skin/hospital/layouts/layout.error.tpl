@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    {include file="gtm.head.tpl"}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>{block name='layout_title'}{$sHtmlTitle}{/block}</title>
@@ -31,8 +30,7 @@
 
 </head>
 
-<body class="{$sBodyClasses}{($IS_MOBILE) ? ' IS_MOBILE' : {($IS_TABLET) ? 'IS_TABLET' : ''}}">
-{include file="gtm.body.tpl"}
+<body>
 <section class="error">
     {block name='layout_page_title' hide}
         <h1>{$smarty.block.child}</h1>

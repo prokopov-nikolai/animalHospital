@@ -115,38 +115,6 @@ class ActionAuth extends Action
                      */
                     $this->User_Authorization($oUser, $bRemember);
                     /**
-                     * Привяжем товары в корзине к пользователю
-                     */
-                    if ($sCartGuid = $this->Session_GetCookie('cart_guid')) {
-                        $aCartItems = $this->Cart_GetItemsByGuid($sCartGuid);
-                        if (count($aCartItems)) {
-                            foreach ($aCartItems as $oCartItem) {
-                                $oCartItem->setuserId($oUser->getId());
-                                $oCartItem->Update();
-                            }
-                        }
-                    }
-                    /**
-                     * Получим товары из корзины
-                     */
-                    $aCartItems = $this->Cart_GetItemsByUserId($oUser->getId());
-                    if (count($aCartItems)) {
-                        $aCart = [];
-                        foreach ($aCartItems as $oCartItem) {
-                            $aCart[$oCartItem->getKey()] = [
-                                'count' => $oCartItem->getCount(),
-                                'make_group' => $oCartItem->getMakeGroup(),
-                                'fabric1_id' => $oCartItem->getFabric1Id(),
-                                'fabric2_id' => $oCartItem->getFabric2Id(),
-                                'fabric3_id' => $oCartItem->getFabric3Id(),
-                                'fabric4_id' => $oCartItem->getFabric4Id(),
-                            ];
-                        }
-                        $this->Session_Set('cart', $aCart);
-                        $this->Cart_ReCalc();
-                        $this->Session_SetCookie('cart_guid', $oCartItem->getGuid());
-                    }
-                    /**
                      * Определяем редирект
                      */
                     $sUrl = Config::Get('module.user.redirect_after_login');

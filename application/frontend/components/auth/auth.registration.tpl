@@ -14,7 +14,7 @@
     {hook run='form_registration_begin'}
 
     {* E-mail *}
-    {component 'field' template='email' label="Email" rules=[ 'remote' => "{router page='auth'}ajax-validate-email" ]}
+    {component 'field' template='email' name="email" label="Email" rules=[ 'remote' => "{router page='auth'}ajax-validate-email" ]}
 
     {* Пароль *}
     {component 'field' template='text'

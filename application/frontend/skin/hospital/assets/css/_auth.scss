@@ -49,7 +49,7 @@
         text-transform: uppercase;
         text-decoration: none !important;
         width: 100%;
-        @include border-radius(5px);
+        @include border-radius(50px);
         &:hover, &:focus {
             background: #e98114;
         }
@@ -150,6 +150,26 @@
         height: 400px;
     }
     &.login {
-        height: 450px;
+        height: 375px;
+    }
+    /**
+     * Validation
+     */
+    .ls-field-input.parsley-error {
+        border-color: #F79F98;
+        background-color: #FFDFDD;
+        box-shadow: 0 0 3px #FABFBB;
+    }
+    .parsley-errors-list {
+        display: none;
+        padding: 10px 13px;
+        margin-top: 10px;
+        background: #f44336;
+        color: #ffcdd2;
+        color: rgba(255,255,255,.7);
+        list-style: outside none none;
+    }
+    .parsley-errors-list.filled {
+        display: block;
     }
 }

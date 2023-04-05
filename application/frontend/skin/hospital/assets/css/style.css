@@ -464,6 +464,9 @@ textarea {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px;
+  /**
+   * Validation
+   */
 }
 .auth h1 {
   color: #000;
@@ -501,10 +504,10 @@ textarea {
   text-transform: uppercase;
   text-decoration: none !important;
   width: 100%;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
 }
 .auth button:hover, .auth button:focus {
   background: #e98114;
@@ -601,7 +604,24 @@ textarea {
   height: 400px;
 }
 .auth.login {
-  height: 450px;
+  height: 375px;
+}
+.auth .ls-field-input.parsley-error {
+  border-color: #F79F98;
+  background-color: #FFDFDD;
+  box-shadow: 0 0 3px #FABFBB;
+}
+.auth .parsley-errors-list {
+  display: none;
+  padding: 10px 13px;
+  margin-top: 10px;
+  background: #f44336;
+  color: #ffcdd2;
+  color: rgba(255, 255, 255, 0.7);
+  list-style: outside none none;
+}
+.auth .parsley-errors-list.filled {
+  display: block;
 }
 
 .up-price {

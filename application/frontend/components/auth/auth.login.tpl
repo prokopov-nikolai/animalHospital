@@ -43,7 +43,7 @@
 
 {if $smarty.local.showExtra}
     <div class="pt-20">
-        <a href="{router page='auth/password-reset'}">{$aLang.auth.reset.title}</a>
+{*        <a href="{router page='auth/password-reset'}">{$aLang.auth.reset.title}</a>*}
     </div>
 {/if}
 

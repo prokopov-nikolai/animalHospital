@@ -13,5 +13,5 @@
 {/block}
 
 {block 'layout_footer_scripts'}
-    <script src="https://www.google.com/recaptcha/api.js?render={Config::Get('module.validate.recaptcha.6LfCK_shAAAAADYQKDfQrF1bxYHP3lDoQ2Er5Zmh')}"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=ReCaptchaCallbackV3&render={Config::Get('module.validate.recaptcha.site_key')}"></script>
 {/block}
