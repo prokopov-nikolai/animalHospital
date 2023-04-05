@@ -4,6 +4,7 @@ class ModuleUser_EntityUser extends EntityORM
 {
     protected $aRelations = [
         'session' => [self::RELATION_TYPE_HAS_ONE, 'ModuleUser_EntitySession', 'user_id'],
+        'pets' => [self::RELATION_TYPE_HAS_MANY, 'ModulePet_EntityPet', 'user_id'],
     ];
 
     protected $aValidateRules = [

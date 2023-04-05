@@ -29,6 +29,9 @@ selectedValue = $oPet->getSpecies()}
     <div class="ls-field-holder pet-user">
         {if $oPet->getUserId()}
             <a href="{$ADMIN_URL}users/{$oPet->getUserId()}/">{$oPet->getUserFio()}</a>
+        {elseif $oUser}
+            <a href="{$ADMIN_URL}users/{$oUser->getId()}/">{$oUser->getFio()}</a>
+            <input type="hidden" name="pet[user_id]" id="pet-user-id" value="{$oUser->getId()}">
         {else}
             <input type="text" class="user autocomplete-pro" value="{$oPet->getUserFio()}">
             <input type="hidden" name="pet[user_id]" id="pet-user-id" value="{$oPet->getUserId()}">

@@ -15,8 +15,8 @@
             <td><a href="{$ADMIN_URL}pets/{$oP->getId()}/"><img src="{$oP->getPhotoWebPath('x50')}" alt=""></a></td>
             <td><a href="{$ADMIN_URL}pets/{$oP->getId()}/">{$oP->getNickname()}</a></td>
             <td>{$oP->getSpeciesText()}</td>
-            <td>{$oP->getUserFio()}</td>
-            <td>{$oP->getUserPhone()}</td>
+            <td><a href="{$ADMIN_URL}users/{$oP->getUserId()}/">{$oP->getUserFio()}</a></td>
+            <td><a href="{$ADMIN_URL}users/{$oP->getUserId()}/">{$oP->getUserPhone()}</a></td>
             <td>
                 {if LS::HasRight('5_pets_edit')}
                     <a href="{$ADMIN_URL}pets/{$oP->getId()}/" class="ls-icon-pencil"></a>

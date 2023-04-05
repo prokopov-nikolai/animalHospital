@@ -133,6 +133,9 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
         } else {
             $oPet = Engine::GetEntity('Pet');
         }
+        if ($iUserId = getRequest('user_id')) {
+            $this->Viewer_Assign('oUser', $this->User_GetById($iUserId));
+        }
         $this->Viewer_Assign('aPetsSpeciesItems', Config::Get('pets_species_items'));
         $this->Viewer_Assign('oPet', $oPet);
         $this->SetTemplateAction('pet.add');
@@ -140,12 +143,12 @@ class PluginAdmin_ActionAdminPets extends PluginAdmin_ActionPlugin
 
     public function PetRemove()
     {
-        $iUserId = $this->GetParamEventMatch(0,1);
-        $oPet = $this->User_GetById($iUserId);
+        $iPetId = $this->GetParamEventMatch(0,1);
+        $oPet = $this->Pet_GetById($iPetId);
         if (!$oPet) return parent::EventNotFound();
         $oPet->Delete();
-        $this->Message_AddNotice('Пользоваль успешно удален', false, true);
-        return Router::Location(ADMIN_URL.'users/');
+        $this->Message_AddNotice('Питомец успешно удален', false, true);
+        return Router::Location($_SERVER['HTTP_REFERER']);
     }
 
     private function PetSubmit(&$oPet)

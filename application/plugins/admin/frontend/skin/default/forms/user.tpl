@@ -1,13 +1,17 @@
 {$tabs = []}
 
 {if LS::HasRight('2_users_edit')}
-    {capture name='sTabMain'}     {include file="{$aTemplatePathPlugin.admin}forms/user/tab.main.tpl"}     {/capture}
-    {$tabs[] = [ 'text' => 'Основное',    'body' => $smarty.capture.sTabMain]}
+    {capture name='sTabMain'} {include file="{$aTemplatePathPlugin.admin}forms/user/tab.main.tpl"} {/capture}
+    {$tabs[] = ['text' => 'Основное', 'body' => $smarty.capture.sTabMain]}
 {/if}
+
 {if LS::HasRight('3_users_edit_rights') && $oUser->getId()}
-    {capture name='sTabRights'}   {include file="{$aTemplatePathPlugin.admin}forms/user/tab.rights.tpl"}   {/capture}
-    {$tabs[] = [ 'text' => 'Права',       'body' => $smarty.capture.sTabRights,  'uid' => 'user-rights']}
+    {capture name='sTabRights'} {include file="{$aTemplatePathPlugin.admin}forms/user/tab.rights.tpl"} {/capture}
+    {$tabs[] = ['text' => 'Права', 'body' => $smarty.capture.sTabRights, 'uid' => 'user-rights']}
 {/if}
+
+{capture name='sTabPets'} {include file="{$aTemplatePathPlugin.admin}forms/user/tab.pets.tpl"} {/capture}
+{$tabs[] = [ 'text' => 'Питомцы', 'body' => $smarty.capture.sTabPets, 'uid' => 'user-pets']}
 
 <form action="" method="post" id="user-form" enctype="multipart/form-data">
     {component 'tabs' classes='' mods='align-top' tabs=$tabs}
